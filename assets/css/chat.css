@@ -1,0 +1,265 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #1f2937;
+}
+
+.demo-page {
+    max-width: 900px;
+    margin: 100px auto;
+    padding: 24px;
+}
+
+.kai-chat-widget {
+    --kai-green: #087f5b;
+    --kai-dark-green: #075e46;
+    --kai-light: #eaf7f0;
+
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 99999;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.kai-chat-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 62px;
+    height: 62px;
+    margin-left: auto;
+    border: 0;
+    border-radius: 50%;
+    background: var(--kai-green);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgb(0 0 0 / 20%);
+    transition: transform 0.2s, background 0.2s;
+}
+
+.kai-chat-toggle:hover {
+    transform: translateY(-3px);
+    background: var(--kai-dark-green);
+}
+
+.kai-chat-toggle svg {
+    width: 31px;
+    height: 31px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.kai-chat-panel {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    bottom: 78px;
+    width: min(360px, calc(100vw - 32px));
+    height: min(510px, calc(100dvh - 120px));
+    min-height: 300px;
+    overflow: hidden;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 40px rgb(0 0 0 / 18%);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px) scale(0.98);
+    transform-origin: bottom right;
+    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+}
+
+.kai-chat-panel.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.kai-chat-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: var(--kai-green);
+    color: white;
+}
+
+.kai-chat-avatar {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: white;
+    color: var(--kai-green);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.kai-chat-agent {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.kai-chat-agent span {
+    font-size: 12px;
+}
+
+.kai-status-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #9ff5bd;
+}
+
+.kai-chat-close {
+    border: 0;
+    background: transparent;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.kai-chat-messages {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    overflow-y: auto;
+    background: #f7faf8;
+}
+
+.kai-message {
+    max-width: 85%;
+    padding: 11px 13px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.kai-message-bot {
+    align-self: flex-start;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-bottom-left-radius: 3px;
+}
+
+.kai-message-user {
+    align-self: flex-end;
+    background: #d9fdd3;
+    border-bottom-right-radius: 3px;
+}
+
+.kai-message time {
+    display: block;
+    margin-top: 5px;
+    color: #6b7280;
+    font-size: 10px;
+    text-align: right;
+}
+
+.kai-quick-replies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px 12px;
+    background: #f7faf8;
+}
+
+.kai-quick-replies button {
+    padding: 8px 10px;
+    border: 1px solid var(--kai-green);
+    border-radius: 18px;
+    background: white;
+    color: var(--kai-dark-green);
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.kai-chat-form {
+    display: flex;
+    gap: 8px;
+    padding: 12px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.kai-chat-form input {
+    flex: 1;
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 24px;
+    outline: none;
+    font-size: 14px;
+}
+
+.kai-chat-form input:focus {
+    border-color: var(--kai-green);
+}
+
+.kai-chat-form button {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border: 0;
+    border-radius: 50%;
+    background: var(--kai-green);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.kai-chat-footer {
+    padding: 0 12px 10px;
+    background: white;
+    color: #6b7280;
+    font-size: 10px;
+    text-align: center;
+}
+
+.kai-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@media (max-width: 480px) {
+    .kai-chat-widget {
+        right: 16px;
+        bottom: 16px;
+    }
+
+    .kai-chat-panel {
+        position: fixed;
+        right: 16px;
+        bottom: 88px;
+        width: calc(100vw - 32px);
+        height: min(520px, calc(100dvh - 120px));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .kai-chat-toggle,
+    .kai-chat-panel {
+        transition: none;
+    }
+}

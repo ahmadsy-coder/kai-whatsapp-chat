@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test du chat KAI</title>
+    <link rel="stylesheet" href="assets/css/chat.css">
+</head>
+<body>
+
+    <main class="demo-page">
+        <h1>Bienvenue chez KAI</h1>
+        <p>Cette page sert à tester notre future interface de chat.</p>
+    </main>
+
+    <!-- Widget de chat -->
+    <div id="kai-chat-widget" class="kai-chat-widget">
+
+        <section
+            id="kai-chat-panel"
+            class="kai-chat-panel"
+            aria-label="Discussion avec KAI"
+            aria-hidden="true"
+            inert
+        >
+            <header class="kai-chat-header">
+                <div class="kai-chat-avatar">K</div>
+
+                <div class="kai-chat-agent">
+                    <strong>Assistance KAI</strong>
+                    <span><i class="kai-status-dot"></i> En ligne</span>
+                </div>
+
+                <button
+                    id="kai-chat-close"
+                    class="kai-chat-close"
+                    type="button"
+                    aria-label="Fermer la discussion"
+                >×</button>
+            </header>
+
+            <div
+                id="kai-chat-messages"
+                class="kai-chat-messages"
+                aria-live="polite"
+                aria-relevant="additions"
+            >
+                <div class="kai-message kai-message-bot">
+                    Bonjour ! 👋 Bienvenue chez KAI.
+                    Comment pouvons-nous vous aider ?
+                    <time>Maintenant</time>
+                </div>
+            </div>
+
+            <div class="kai-quick-replies">
+                <button type="button" data-message="Je veux des informations sur KAI">
+                    Informations
+                </button>
+                <button type="button" data-message="J'ai besoin d'assistance">
+                    Assistance
+                </button>
+            </div>
+
+            <form id="kai-chat-form" class="kai-chat-form">
+                <label class="kai-sr-only" for="kai-chat-input">
+                    Votre message
+                </label>
+
+                <input
+                    id="kai-chat-input"
+                    type="text"
+                    placeholder="Écrivez votre message..."
+                    maxlength="1000"
+                    autocomplete="off"
+                    required
+                >
+
+                <button type="submit" aria-label="Envoyer le message">
+                    ➤
+                </button>
+            </form>
+
+            <footer class="kai-chat-footer">
+                Démonstration de l'interface KAI
+            </footer>
+        </section>
+
+        <button
+            id="kai-chat-toggle"
+            class="kai-chat-toggle"
+            type="button"
+            aria-label="Ouvrir la discussion KAI"
+            aria-expanded="false"
+            aria-controls="kai-chat-panel"
+        >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20l1.2-4.3A8.4 8.4 0 1 1 20 11.5Z"/>
+                <path d="M8 9.5c.6 2 2.1 3.5 4.2 4.2"/>
+            </svg>
+        </button>
+
+    </div>
+    
+      <script src="assets/js/chat.js" defer></script>
+
+</body>
+</html>
